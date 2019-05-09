@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_img" inherit_id="sale.report_saleorder_document">
+             <xpath expr="//div[hasclass('page')]/table[1]/thead/tr[1]/th[1]" position="before">
+                <th class="text-left">Imagen</th>
+             </xpath>
+
+             <xpath expr="//div[hasclass('page')]/table[1]/tbody/t/tr/t/td[1]" position="before">
+                <td><span><img t-attf-src="data:image/*;base64,{{line.product_id.image_small}}"/></span></td>
+             </xpath>
+
+             <xpath expr="//div[hasclass('page')]/table[1]/thead/tr[1]/th[1]" position="after">
+                <th class="text-left">Tiempo Entrega</th>
+             </xpath>
+             
+             <xpath expr="//div[hasclass('page')]/table[1]/tbody/t/tr/t/td[1]" position="after">
+                <td><span t-field="line.time_delivery"/></td>
+             </xpath>
+             
+        </template>
+
+        <record id="view_order_form_add_time" model="ir.ui.view">
+            <field name="name">Add fields time</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook//field[@name='order_line']//tree//field[@name='product_id']" position="after">
+                    <field name="time_delivery" string="Tiempo entrega"/>
+                 </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>
