@@ -3,13 +3,13 @@
     'name': "report_sale_img",
 
     'summary': """
-        Modulo que muestra la imagen y tiempo de entrega en la orden de pedio y reporte""",
+        Modulo que muestra la imagen y tiempo de entrega en la orden de venta, compra y reportes""",
 
     'description': """
-        Este modulo agrega la imagen del producto por cada linea, al reporte de pedido, ademas se anexa un campo de tiempo de entrega para cada linea de la orden de pedido.
+        Este modulo agrega la imagen del producto por cada linea al reporte de venta y compra, asi mismo se agregaron los campos de imagen a los presupuestos de estas mismas, ademas se anexa un campo de tiempo de entrega para cada linea de la orden de pedido.
     """,
 
-    'author': "My Company",
+    'author': "XMARTS",
     'website': "http://www.xmarts.com",
 
     # Categories can be used to filter modules in modules listing

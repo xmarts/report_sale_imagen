@@ -20,6 +20,17 @@
              
         </template>
 
+        <template id="report_image" inherit_id="purchase.report_purchaseorder_document">
+             <xpath expr="//div[hasclass('page')]/table[1]/thead/tr[1]/th[1]" position="before">
+                <th class="text-left">Imagen</th>
+             </xpath>
+
+             <xpath expr="//div[hasclass('page')]/table[1]/tbody//tr/td[1]" position="before">
+                <td><span><img t-attf-src="data:image/*;base64,{{line.product_id.image_small}}"/></span></td>
+             </xpath>
+             
+        </template>
+
         <record id="view_order_form_add_time" model="ir.ui.view">
             <field name="name">Add fields time</field>
             <field name="model">sale.order</field>
@@ -27,6 +38,28 @@
             <field name="arch" type="xml">
                 <xpath expr="//notebook//field[@name='order_line']//tree//field[@name='product_id']" position="after">
                     <field name="time_delivery" string="Tiempo entrega"/>
+                 </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="image_2_sol_view">
+            <field name="name">image.sol.view</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree/field[@name='product_id']" position="before">
+                    <field name="image" widget="image" class="oe_avatar"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_order_form_add_img" model="ir.ui.view">
+            <field name="name">Add fields image</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree/field[@name='product_id']" position="before">
+                    <field name="img_purchase" widget="image" class="oe_avatar"/>
                  </xpath>
             </field>
         </record>
